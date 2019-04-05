@@ -83,6 +83,7 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
                        float(args[3]), step_3d)
             matrix_mult(csystems[-1],polygons)
             draw_polygons(polygons, screen, color)
+            polygons = []
 
         elif line == 'torus':
             #print 'TORUS\t' + str(args)
@@ -91,6 +92,7 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
                       float(args[3]), float(args[4]), step_3d)
             matrix_mult(csystems[-1],polygons)
             draw_polygons(polygons, screen, color)
+            polygons = []
 
         elif line == 'box':
             #print 'BOX\t' + str(args)
@@ -99,6 +101,7 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
                     float(args[3]), float(args[4]), float(args[5]))
             matrix_mult(csystems[-1],polygons)
             draw_polygons(polygons, screen, color)
+            polygons = []
 
         elif line == 'circle':
             #print 'CIRCLE\t' + str(args)
@@ -162,9 +165,6 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             csystems.pop()
 
         elif line == 'display' or line == 'save':
-            clear_screen(screen)
-            draw_lines(edges, screen, color)
-            draw_polygons(polygons, screen, color)
 
             if line == 'display':
                 display(screen)
